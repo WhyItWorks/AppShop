@@ -1,6 +1,6 @@
-@extends('layouts.app') @section('title', 'Bienvenido a App Shop. | Productos') @section('body-class','profile-page') @section('content')
+@extends('layouts.app') @section('title',config('app.name') .' | Productos') @section('body-class','profile-page') @section('content')
 
-<div class="header header-filter" style="background-image: url('/img/examples/city.jpg');"></div>
+<div class="header header-filter" style="background-image: url('{{ asset('/img/city1.jpg') }}');"></div>
 
 <div class="main main-raised">
 	<div class="profile-content">

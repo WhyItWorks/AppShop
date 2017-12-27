@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('title', 'Bienvenido a App Shop. | Categorías') @section('body-class','profile-page') @section('styles')
+@extends('layouts.app') @section('title', config('app.name') .' | Categorías') @section('body-class','profile-page') @section('styles')
 <style>
 	.team {
 		padding-bottom: 50px;
@@ -23,7 +23,7 @@
 </style>
 @endsection @section('content')
 
-<div class="header header-filter" style="background-image: url('/img/examples/city.jpg');"></div>
+<div class="header header-filter" style="background-image: url('{{ asset('/img/city1.jpg') }}');"></div>
 
 <div class="main main-raised">
 	<div class="profile-content">

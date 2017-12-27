@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('title', 'Bienvenido a App Shop. | Dashboard') @section('body-class','product-page') @section('content')
+@extends('layouts.app') @section('title', config('app.name') .' | Dashboard') @section('body-class','product-page') @section('content')
 
 <div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
 
@@ -73,6 +73,8 @@
 					@endforeach
 				</tbody>
 			</table>
+
+			<strong>Total a pagar:</strong> ${{ auth()->user()->cart->total }}
 			<div class="text-center">
 				<form action="{{ url('/order') }}" method="post">
 					{{ csrf_field() }}

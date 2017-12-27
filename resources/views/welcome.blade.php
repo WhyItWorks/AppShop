@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('title', 'Bienvenido a App Shop.') @section('body-class','landing-page') @section('content')
+@extends('layouts.app') @section('title', 'Bienvenido a '. config('app.name')) @section('body-class','landing-page') @section('content')
 @section('styles')
 <style>
 	.team .row .col-md-4 {
@@ -64,7 +64,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h1 class="title">Bienvenido a App Shop.</h1>
+				<h1 class="title">Bienvenido a {{ config('app.name') }}</h1>
 				<h4>Realiza pedidos en línea y te contactaremos para coordinar la entrega.</h4>
 				<br />
 				<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger btn-raised btn-lg">
@@ -80,7 +80,7 @@
 		<div class="section text-center section-landing">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<h2 class="title">¿Por qué App Shop?</h2>
+					<h2 class="title">¿Por qué {{ config('app.name') }} ?</h2>
 					<h5 class="description">Puedes revisar nuestra relación completa de productos, comprar precios y realizar tus pedidos cuando estés seguro.</h5>
 				</div>
 			</div>

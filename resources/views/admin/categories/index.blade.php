@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('title', 'Listado de categorías') @section('body-class','product-page') @section('content')
+@extends('layouts.app') @section('title',config('app.name'). ' | Listado de categorías') @section('body-class','product-page')
+@section('content')
 
 <div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
 </div>
@@ -17,6 +18,7 @@
 							<tr>
 								<th class="col-md-2 text-center">Nombre</th>
 								<th class="text-center">Descripción</th>
+								<th class="text-center">Imagen</th>
 								<th class="text-right">Opciones</th>
 							</tr>
 						</thead>
@@ -25,6 +27,9 @@
 							<tr>
 								<td>{{$category->name}}</td>
 								<td>{{$category->description}}</td>
+								<td>
+									<img src="{{ $category->featured_image_url }}" alt="Imagen que hace referencia a la categoría '{{ $category->name }}'" height="50">
+								</td>
 								<td class="td-actions text-right">
 
 									<form action="{{ url('/admin/categories/'. $category->id ) }}" method="post">

@@ -9,6 +9,7 @@ use App\Category;
 use App\Product;
 use App\ProductImage;
 use App\CartDetail;
+use File;
 
 class CategoryController extends Controller
 {
@@ -26,7 +27,19 @@ class CategoryController extends Controller
     {
    
         $this->validate($request, Category::$rules, Category::$messages);
-        Category::create($request->all()); //Asignación masiva
+        $category = Category::create($request->only('name', 'description')); //Asignación masiva
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = public_path() . '/images/categories';
+            $fileName = uniqid() . $file->getClientOriginalName();
+            $moved = $file->move($path, $fileName);
+             if($moved){                  
+                 $category->image = $fileName;                 
+                 $category->save();
+             }
+        }
+        
         //<=>
         // $category = new Category();
         // $category->name = $request->input('name');
@@ -45,12 +58,24 @@ class CategoryController extends Controller
     {
  
         $this->validate($request, Category::$rules, Category::$messages);
-        $category->update($request->all());
-        //<=>
-        // $category = Category::find($id);
-        // $category->name = $request->input('name');
-        // $category->description = $request->input('description');        
-        // $category->save();
+        $category->update($request->only('name', 'description'));//Asignación masiva
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = public_path() . '/images/categories';
+            $fileName = uniqid() . $file->getClientOriginalName();
+            $moved = $file->move($path, $fileName);
+             if($moved){
+                 
+                 $previusPath = $path . '/' . $category->image ;
+                 $category->image = $fileName;                 
+                 $save = $category->save();
+
+                if($save)
+                 File::delete($previusPath);
+
+             }
+        }    
         return redirect('/admin/categories');
     }
     public function destroy(Category $category)

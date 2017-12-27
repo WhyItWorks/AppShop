@@ -27,8 +27,15 @@ class Category extends Model
 
     }
     public function getFeaturedImageUrlAttribute() {              
-        $categoryProduct = $this->products()->first();                                                    
-        return $categoryProduct->featured_image_url;
+        if ($this->image) 
+            return '/images/categories/'.$this->image;
+                    
+        $categoryFirstProduct = $this->products()->first();                                                    
+
+        if($categoryFirstProduct)
+            return $categoryFirstProduct->featured_image_url;                
+
+        return '/images/categories/default.gif';
 
     }
 

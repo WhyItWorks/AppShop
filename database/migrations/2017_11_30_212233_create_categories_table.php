@@ -32,4 +32,19 @@ class CreateCategoriesTable extends Migration
     {
         Schema::dropIfExists('categories');
     }
+
+    // public function up()
+    // {
+    //     Schema::table('categories', function (Blueprint $table) {
+    //       $table->string('image')->nullable;
+    //     });
+    // }
+
+    
+    // public function down()
+    // {
+    //     Schema::dropColumn('categories', function (Blueprint $table) {
+    //         $table->string('image');
+    //       });
+    // }
 }

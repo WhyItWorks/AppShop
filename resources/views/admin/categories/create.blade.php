@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('title', 'Bienvenido a App Shop.') @section('body-class','product-page') @section('content')
+@extends('layouts.app') @section('title', config('app.name').' | Añadir categorías') @section('body-class','product-page')
+@section('content')
 
 <div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
 
@@ -18,7 +19,7 @@
 				</ul>
 			</div>
 			@endif
-			<form method="post" action="{{ url('/admin/categories') }}">
+			<form method="post" action="{{ url('/admin/categories') }}" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<div class="row">
 
@@ -27,6 +28,10 @@
 							<label class="control-label">Nombre</label>
 							<input type="text" class="form-control" name="name" value="{{ old('name') }}">
 						</div>
+					</div>
+					<div class="col-sm-6">
+						<label class="control-label">Imagen de la categoría</label>
+						<input type="file" name="image">
 					</div>
 
 				</div>
