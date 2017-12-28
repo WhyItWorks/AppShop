@@ -27,9 +27,15 @@
 				<p>{{ $product->long_description }}</p>
 			</div>
 			<div class="text-center">
+				@guest
+				<a class="btn btn-primary btn-round" href="{{ route('login') }}">
+					<i class="material-icons">add</i> Añadir al carrito
+				</a>
+				@else
 				<button class="btn btn-primary btn-round" data-toggle="modal" data-target="#ModalAddToCart">
 					<i class="material-icons">add</i> Añadir al carrito
 				</button>
+				@endguest
 			</div>
 
 			<div class="row">
